@@ -1,0 +1,21 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/question/question",
+    "pages/personal/personal",
+    "pages/group/group",
+    "pages/canvas/canvas"
+  ],
+  "window":{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "葱葱一念",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

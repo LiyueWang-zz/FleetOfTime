@@ -1,0 +1,30 @@
+<!--pages/personal/personal.wxml-->
+<view class="container">
+
+   <view class="text_button"> 
+    <button class="text_button_child" bind:tap="goCanvasPage">生成分享图片</button>
+    <button class="text_button_child" bindtap="goGroupPage">查看总体结果</button>
+   </view> 
+
+   <view class="tag"> 
+    <text class="tag_child">{{tag}}</text>
+   </view> 
+
+   <view class="advice"> 
+    <text class="advice_child">{{advice}}</text>
+   </view> 
+
+   <view class="qr_code"> 
+    <image
+        class="qr_code_child"
+        src="{{'../../images/pics/ccyn_qrcode.jpg'}}"
+        mode='aspectFit'
+    ></image>
+    <text class="qr_code_text">洋葱调查局出品</text>
+   </view> 
+
+   <canvasdrawer painting="{{painting}}" class="canvasdrawer" bind:getImage="eventGetImage"/>
+
+</view>
+
+

@@ -1,0 +1,84 @@
+page{
+  width:100%;
+  height:100%;
+  overflow: hidden;
+}
+
+.container{
+  width:100%;
+  height:100%;
+  background: url('https://ccyn-1256904013.cos.ap-shanghai.myqcloud.com/adviceBackgroud3.jpg');
+  background-size: cover; 
+  display: flex;
+  flex-direction: column;
+}
+
+.tag {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-weight: bold;
+  font-size: large;
+  position: relative;
+  left: -30%;
+  top: 60%;
+}
+
+.advice {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: medium;
+  position: relative;
+  top: 63%;
+  width: 90%;
+  height: 8%;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+}
+
+.text_button {
+  display: flex;
+  flex-direction: row; 
+  position: relative;
+  right: -22%;
+  top: 59%;
+}
+
+.text_button_child {
+  color: black;
+  font-size: x-small;
+  background-color: transparent; 
+  border-bottom: 0.5px solid grey; 
+}
+
+ /* .text_button_child::after{
+  border: none;
+}  */
+
+.qr_code {
+  position: relative;
+  bottom: -65%;
+  right: -38%;
+  width: 22%;
+  height: 12%;
+}
+
+.qr_code_child {
+  width: 100%;
+  height: 100%;
+  margin-bottom: -8px;
+}
+.qr_code_text {
+  margin-top: 0px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: x-small;
+  font-weight: bold;
+  color: purple;
+}
+
+.share-image {
+  width: 600rpx;
+  height: 900rpx;
+  margin: 10rpx; 
+  border: 1px solid black;
+   /* margin: 0 75rpx;  */
+}

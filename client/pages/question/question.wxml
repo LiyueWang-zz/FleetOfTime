@@ -1,0 +1,85 @@
+<!--pages/question/question.wxml-->
+
+ <view class="container">
+
+  <!-- <view class="qindex"> -->
+    <text class="qindex">第{{question.qindex}}题</text>
+  <!-- </view> -->
+
+  <view class="question">
+    <!-- 组合题 -->
+    <view class="question_item" wx:if="{{question.qtype === 'combination'}}">  
+      <text class="question_content">{{question.choice_question}}</text>
+      <radio-group class="radio-group" bindchange="radioChange" data-value="{{question.qindex}}">
+        <label class="radio" wx:for="{{question.choices}}">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+
+      <!-- bindfocus => bindconfirm-->
+      <text class="fill_content" wx:if="{{question.first}}">{{question.first}}</text>
+      <view class="fill_question" wx:for="{{question.fills}}">
+        <text class="fill_content">{{item.prefix}}</text>
+        <input class="fill_blank" type="{{item.keyboard}}" value="{{item.answer}}" confirm-type="done"  bindinput="digitInputStore" data-value="{{question.qindex}};{{index}}"> </input>
+        <text class="fill_content">{{item.post}}</text>
+      </view>
+    </view>
+
+    <!-- 选择题 -->
+    <view class="question_item" wx:elif="{{question.qtype === 'choice'}}">  
+      <text class="question_content">{{question.choice_question}}</text>
+      <radio-group class="radio-group" bindchange="radioChange" data-value="{{question.qindex}}">
+        <label class="radio" wx:for="{{question.choices}}">
+          <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+
+    <!-- 填空题 -->
+    <view class="question_item" wx:elif="{{question.qtype === 'fill'}}">  
+      <text class="fill_content" wx:if="{{question.first}}">{{question.first}}</text>
+      <view class="fill_question" wx:for="{{question.fills}}">
+        <text class="fill_content">{{item.prefix}}</text>
+        <input class="fill_blank" type="{{item.keyboard}}" value="{{item.answer}}"  confirm-type="done"  bindinput="digitInputStore" data-value="{{question.qindex}};{{index}}"> </input>
+        <text class="fill_content">{{item.post}}</text>
+      </view>
+    </view>
+
+    <!-- 简答题 -->
+    <view class="question_item" wx:elif="{{question.qtype === 'section'}}">  
+      <text class="question_content">{{question.section_question}}</text>
+      <input type="text" class="ansinput" placeholder="请输入您的答案" placeholder-style="color:grey" maxlength="1000" focus="true" value="{{section_answer}}" confirm-type="done"  bindconfirm="textInputStore" data-value="{{question.qindex}}">
+      </input>
+    </view>
+  </view>
+
+  <view class="buttons">
+    <button class="button_last" type="{{question.button_type}}" bindtap="lastQuestion" data-value="{{question.qindex - 2}}">{{question.button_last}}</button>
+    <button class="button_next" type="primary" bindtap="nextQuestion" data-value="{{question.qindex}}">{{question.button_next}}</button>
+  </view>
+
+</view> 
+
+  <!-- <view class="qcontent">
+    <text class="content">{{question.content}}</text>
+  </view>
+  <view class="answer">
+    <input type="text" class="ansinput" placeholder="请输入您的答案" placeholder-style="color:grey" maxlength="1000" focus="true" value="{{question.answer}}" confirm-type="done"  bindfocus="confirmStore" data-value="{{question}}"></input>
+  </view> -->
+<!-- <scroll-view scroll-y="true">
+  <view wx:for="{{questions}}" wx:for-index="idx" class="item-container" bindtap="showDetail" id="{{idx}}">
+      <view class="question-view">
+        <text class="number">第{{item.num}}题</text>
+        <text class="question">{{item.text}}</text>
+      </view>
+
+      <view class="answer-view">
+        <input class="answer" type="text"></input>
+      </view>
+
+      <button class="last" bindtap="lastQuestion" data-value="{{idx - 1}}">上一题</button>
+      <button class="next" bindtap="nextQuestion" data-value="{{idx + 1}}">下一题</button>
+      <button class="submit" bindtap="submit" data-value="{{idx + 1}}">提交</button>
+      
+  </view>
+</scroll-view> -->

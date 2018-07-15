@@ -1,0 +1,20 @@
+<!--pages/results/results.wxml-->
+
+<view class="container">
+
+   <view class="nextPage"> 
+    <button class="nextPage" bindtap="goNextPage" data-value="{{section.next_index}}">{{section.button_value}}</button>
+   </view> 
+
+   <view class="question"> 
+    <text class="question_child">{{section.question}}</text>
+   </view> 
+
+  <scroll-view class="scroll-view" scroll-y="true">
+  <view class="answers" id="{{section.content_type}}" wx:for="{{section.answers}}">
+    <text class="answer">{{item.section_answer}}</text>
+  </view>
+  </scroll-view>
+
+</view>
+
