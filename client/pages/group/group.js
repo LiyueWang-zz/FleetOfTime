@@ -18,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("first section");
+    // console.log("first section");
     this.getServerAnswers('13');
   },
 
@@ -35,8 +35,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log("get section answers from server...");
-        console.log(res.data);
+        // console.log("get section answers from server...");
         var sectionAnswers = res.data;
         that.transformAnswer(qid, sectionAnswers);
       }
@@ -48,7 +47,7 @@ Page({
     var next_index = null;
     var button_value = null;
     var content_type = qid === '15'? 'name': 'other';
-    console.log(`content_type: ${content_type}`);
+    // console.log(`content_type: ${content_type}`);
     
     switch(qid) {
       case '13':

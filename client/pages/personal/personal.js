@@ -19,8 +19,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("results onLoad: " + JSON.stringify(options, null, 4));
-
     const tag = wx.getStorageSync('tag');
     const advice = wx.getStorageSync('advice');
     if (tag&&advice) {
@@ -46,8 +44,7 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log("get advice for user from server...");
-        console.log(res.data);
+        // console.log("get advice for user from server...");
         var user = res.data[0];
         that.setData({ tag: user.tag });
         that.setData({ advice: user.advice });

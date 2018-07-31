@@ -83,7 +83,7 @@ Page({
         // 可使用本函数更新登录态
         qcloud.loginWithCode({
           success: res => {
-            console.log("using existing session login...");
+            // console.log("using existing session login...");
             this.setData({ userInfo: res, logged: true });
             util.showSuccess('登录成功');
             this.checkUser(res);
@@ -97,7 +97,7 @@ Page({
         // 首次登录
         qcloud.login({
           success: res => {
-            console.log("first login...");
+            // console.log("first login...");
             this.setData({ userInfo: res, logged: true });
             util.showSuccess('登录成功');
             this.checkUser(res);
@@ -123,19 +123,18 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
-          console.log("get user from server...");
-          console.log(res.data);
+          // console.log("get user from server...");
           if (res.data.length === 0) {
-            console.log(`user ${userInfo.nickName} does not exist`);
+            // console.log(`user ${userInfo.nickName} does not exist`);
             that.putUser(userInfo);
           } else {
-            console.log(`user ${userInfo.nickName} exists`);
+            // console.log(`user ${userInfo.nickName} exists`);
             // set local cache uid
             const uid = res.data[0].id;
             const userStatus = res.data[0].status;
             const avatarUrl = userInfo.avatarUrl;
             const nickName = userInfo.nickName;
-            console.log(`cache uid: ${uid}, userStatus: ${userStatus}, avatarUrl: ${avatarUrl}, nickName: ${nickName}`);
+            // console.log(`cache uid: ${uid}, userStatus: ${userStatus}, avatarUrl: ${avatarUrl}, nickName: ${nickName}`);
             wx.setStorageSync('uid', uid);
             wx.setStorageSync('userStatus', userStatus);
             wx.setStorageSync('avatarUrl', avatarUrl);

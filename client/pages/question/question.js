@@ -43,21 +43,21 @@ Page({
 
     var choice_answer = 'A';
     var choice_answers = wx.getStorageSync('choice_answers');
-    console.log(`transform ${qindex} choice_answers: ` + JSON.stringify(choice_answers, null, 4));
+    // console.log(`transform ${qindex} choice_answers: ` + JSON.stringify(choice_answers, null, 4));
     if (choice_answers && choice_answers[qindex]) {
       choice_answer = choice_answers[qindex];
     }
 
     var fill_answer = null;
     var fill_answers = wx.getStorageSync('fill_answers');
-    console.log(`transform ${qindex} fill_answers: ` + JSON.stringify(fill_answers, null, 4));
+    // console.log(`transform ${qindex} fill_answers: ` + JSON.stringify(fill_answers, null, 4));
     if (fill_answers && fill_answers[qindex]) {
       fill_answer = fill_answers[qindex];
     }
 
     var section_answer = null;
     var section_answers = wx.getStorageSync('section_answers');
-    console.log(`transform ${qindex} section_answers: ` + JSON.stringify(section_answers, null, 4));
+    // console.log(`transform ${qindex} section_answers: ` + JSON.stringify(section_answers, null, 4));
     if (section_answers && section_answers[qindex]) {
       section_answer = section_answers[qindex];
     }
@@ -125,7 +125,7 @@ Page({
 
   lastQuestion(e) {
     var gIndex = e.currentTarget.dataset.value;
-    console.log("last question get index: " + (gIndex));
+    // console.log("last question get index: " + (gIndex));
     if (gIndex >= 0) {
       this.transform(gIndex);
     } else {
@@ -135,7 +135,7 @@ Page({
 
   nextQuestion(e) {
     var gIndex = e.currentTarget.dataset.value;
-    console.log("next question get gloableQuestion index: " + (gIndex));
+    // console.log("next question get gloableQuestion index: " + (gIndex));
 
     if (gIndex < totalQuestionNum) {
       this.transform(gIndex);
@@ -155,7 +155,7 @@ Page({
   radioChange: function (e) {
     var qindex = e.currentTarget.dataset.value;
     var checked = e.detail.value;
-    console.log('radio 单选题第' + qindex + '题，选' + checked);
+    // console.log('radio 单选题第' + qindex + '题，选' + checked);
     try {
       var value = wx.getStorageSync('choice_answers');
       if (value) {
@@ -228,9 +228,9 @@ Page({
     const choice_answers = wx.getStorageSync('choice_answers');
     const fill_answers = wx.getStorageSync('fill_answers');
     const section_answers = wx.getStorageSync('section_answers');
-    console.log("cache choice_answers: " + JSON.stringify(choice_answers, null, 4));
-    console.log("cache fill_answers: " + JSON.stringify(fill_answers, null, 4));
-    console.log("cache section_answers: " + JSON.stringify(section_answers, null, 4));
+    // console.log("cache choice_answers: " + JSON.stringify(choice_answers, null, 4));
+    // console.log("cache fill_answers: " + JSON.stringify(fill_answers, null, 4));
+    // console.log("cache section_answers: " + JSON.stringify(section_answers, null, 4));
 
     for (var i = 0; i < totalQuestionNum; i++) {
       const question = globalQuestions[i];
@@ -283,7 +283,7 @@ Page({
         }
       }
 
-      console.log(`answer for question ${question.qindex}: ` + JSON.stringify(answer, null, 4));
+      // console.log(`answer for question ${question.qindex}: ` + JSON.stringify(answer, null, 4));
       this.putAnswer(answer);
     }
     // compute advice
@@ -367,7 +367,7 @@ Page({
         max_advices = advice.advices;
       }
     });
-    console.log("advice_scores: " + JSON.stringify(advice_scores, null, 4));
+    // console.log("advice_scores: " + JSON.stringify(advice_scores, null, 4));
     if (max==0) {
       max_tag = default_tag;
       max_advices = default_advices;
@@ -376,7 +376,7 @@ Page({
     max_advices = max_advices.split('\n');
     const index = util.getRandomInt(max_advices.length);
     const selected_advice = max_advices[index];
-    console.log(`max_tag: ${max_tag}, max_score: ${max}, selected_advice: ${selected_advice}`);
+    // console.log(`max_tag: ${max_tag}, max_score: ${max}, selected_advice: ${selected_advice}`);
     wx.setStorageSync('tag', max_tag);
     wx.setStorageSync('advice', selected_advice);
 
@@ -407,7 +407,7 @@ Page({
   },
 
   putAnswer(answer) {
-    console.log("put answer into server...");
+    // console.log("put answer into server...");
     var that = this;
 
     wx.request({
